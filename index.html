@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>events</title>
+</head>
+<body>
+
+<p id="hello">Welcome here</p>
+<button onclick="changeBackground('red');">Change color</button>
+
+<!-- built in events-->
+<script>
+    function changeBackground(color) {
+        document.body.style.background = color;
+    }
+
+
+<!--custom events in javascript-->
+
+// create new event
+let event = new CustomEvent(
+"newMessage",
+{
+detail: {
+message: "Bye now"
+
+},
+bubbles: true,
+cancelable: true
+}
+);
+    // dispatch event on element
+    document.getElementById("hello").dispatchEvent(event);
+
+    //add event listener
+    document.addEventListener("newMessage", newMessageHandler, false);
+
+
+
+    //promises
+
+    let promise= new Promise((resolve,reject) =>{
+        let multiply=3*4;
+        if( multiply==12) {
+            resolve('correct');
+        } else{
+            reject('An error has been encountered');
+        }
+    });
+    promise.then (function ()
+    {
+        console.log ("You are in the right track");
+    }).
+    catch (function () {
+        console.log ("Something is wrong in the operation");
+    });
+</script>
+
+</body>
+</html>
